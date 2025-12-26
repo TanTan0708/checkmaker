@@ -1,0 +1,345 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Main';
+}
+
+@font-face {
+  font-family: 'Main';
+  src: url("/SF-Pro-Rounded-Semibold.otf");
+}
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Logo Styles */
+.logo-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.logo-placeholder {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff6600;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.logo-placeholder img{
+  height: 200px;
+  width: 200px;
+}
+
+/* Body Styles */
+.body-container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.check-form {
+  background: #DEDEDE;
+  border-radius: 40px;
+  padding: 30px;
+  width: 100%;
+  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 15px; /* Reduced gap slightly for better fit */
+  flex-wrap: nowrap; /* Forces them to stay side-by-side */
+}
+
+
+
+
+.bank-input-group {
+  flex: 2; /* Gives the Bank input more relative width */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 16px;
+  min-width: 0; /* Prevents flex items from overflowing their container */
+}
+
+.date-input-group {
+  flex: 1; /* Date takes up less space than the Bank input */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 16px;
+  min-width: 150px; /* Ensures date doesn't get too squashed */
+}
+
+.bank-input,
+.date-input {
+  border: none;
+  outline: none;
+  font-size: 1em;
+  background: transparent;
+  color: #5D5C5C;
+  width: 100%; /* Ensures the input fills the available group space */
+  min-width: 0; /* Allows the input to shrink if needed without breaking icons */
+}
+
+
+
+.icon-placeholder {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* CRITICAL: Prevents icons from being squashed */
+}
+
+.icon-placeholder img {
+  width: 40px; /* Scaled down slightly to fit better within the 100% row */
+  height: 40px;
+}
+
+.form-body {
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.checkbox-placeholder {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff6600;
+  font-size: 1.3em;
+  flex-shrink: 0;
+}
+
+.checkbox-placeholder img{
+  height: 40px;
+  width: 40px;
+}
+
+.form-row label {
+  font-weight: 500;
+  color: #5D5C5C;
+  white-space: nowrap;
+}
+
+.text-input {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #666;
+  background: transparent;
+  padding: 8px 0;
+  font-size: 1em;
+  color: #5D5C5C;
+  outline: none;
+}
+
+.wording-row {
+  gap: 5px;
+}
+
+.wording-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 0;
+  font-size: 1em;
+  color: #5D5C5C;
+  outline: none;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.print-button {
+  background: #ff6600;
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.print-button:hover {
+  background: #d57623;
+  border-color: transparent;
+}
+
+/* Footer Styles */
+.footercontainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.info-icon-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.info-icon-placeholder:hover {
+  background: #d57623;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .logo-container {
+    padding: 10px;
+  }
+
+  .check-form {
+    padding: 20px;
+  }
+
+  .form-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bank-input-group,
+  .date-input-group {
+    width: 100%;
+  }
+
+  .form-row {
+    flex-wrap: wrap;
+  }
+
+  .text-input {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .check-form {
+    padding: 15px;
+  }
+
+  .print-button {
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  .logo-placeholder {
+    width: 100px;
+    height: 50px;
+    font-size: 1em;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
