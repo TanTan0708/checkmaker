@@ -91,13 +91,21 @@ function Logo() {
     </div>
   );
 }
+const getTodayDate = () => {
+  const today = new Date();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  const year = today.getFullYear();
+  return `${month}/${day}/${year}`;
+};
 
 // Body Component
 function Body() {
   const [payee, setPayee] = React.useState('');
   const [amount, setAmount] = React.useState('');
   const [bank, setBank] = React.useState('');
-  const [date, setDate] = React.useState('12/18/2025');
+  const [date, setDate] = React.useState(getTodayDate());
+
 
   const wording = numberToWords(amount);
 
