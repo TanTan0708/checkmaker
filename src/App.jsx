@@ -1,5 +1,86 @@
 import React from 'react';
 
+// Number to words conversion function
+function numberToWords(num) {
+  if (!num || num === '') return '';
+  
+  const numValue = parseFloat(num.toString().replace(/,/g, ''));
+  
+  if (isNaN(numValue)) return '';
+  if (numValue === 0) return 'Zero';
+  if (numValue < 0) return 'Negative ' + numberToWords(Math.abs(numValue));
+  
+  const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+  const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+  const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+  
+  function convertLessThanThousand(n) {
+    if (n === 0) return '';
+    
+    let result = '';
+    
+    if (n >= 100) {
+      result += ones[Math.floor(n / 100)] + ' Hundred';
+      n %= 100;
+      if (n > 0) result += ' ';
+    }
+    
+    if (n >= 10 && n <= 19) {
+      result += teens[n - 10];
+    } else if (n >= 20) {
+      result += tens[Math.floor(n / 10)];
+      if (n % 10 > 0) {
+        result += ' ' + ones[n % 10];
+      }
+    } else if (n > 0) {
+      result += ones[n];
+    }
+    
+    return result;
+  }
+  
+  // Split into dollars and cents
+  const parts = numValue.toFixed(2).split('.');
+  const dollars = parseInt(parts[0]);
+  const cents = parseInt(parts[1]);
+  
+  let result = '';
+  
+  if (dollars >= 1000000000) {
+    const billions = Math.floor(dollars / 1000000000);
+    result += convertLessThanThousand(billions) + ' Billion';
+    const remainder = dollars % 1000000000;
+    if (remainder > 0) result += ' ';
+  }
+  
+  const millionPart = Math.floor((dollars % 1000000000) / 1000000);
+  if (millionPart > 0) {
+    result += convertLessThanThousand(millionPart) + ' Million';
+    if (dollars % 1000000 > 0) result += ' ';
+  }
+  
+  const thousandPart = Math.floor((dollars % 1000000) / 1000);
+  if (thousandPart > 0) {
+    result += convertLessThanThousand(thousandPart) + ' Thousand';
+    if (dollars % 1000 > 0) result += ' ';
+  }
+  
+  const lastPart = dollars % 1000;
+  if (lastPart > 0 || dollars === 0) {
+    result += convertLessThanThousand(lastPart);
+  }
+  
+  result = result.trim();
+  
+  if (cents > 0) {
+    result += ' and ' + cents + '/100';
+  } else {
+    result += ' and 00/100';
+  }
+  
+  return result;
+}
+
 // Logo Component
 function Logo() {
   return (
@@ -15,9 +96,10 @@ function Logo() {
 function Body() {
   const [payee, setPayee] = React.useState('');
   const [amount, setAmount] = React.useState('');
-  const [wording, setWording] = React.useState('');
   const [bank, setBank] = React.useState('');
   const [date, setDate] = React.useState('12/18/2025');
+
+  const wording = numberToWords(amount);
 
   const handlePrint = () => {
     window.print();
@@ -76,7 +158,7 @@ function Body() {
             <input 
               type="text" 
               value={wording}
-              onChange={(e) => setWording(e.target.value)}
+              readOnly
               className="wording-input"
             />
             <label>)</label>
